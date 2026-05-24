@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="externos/assets/Banner-FluxoHub-readme.png" alt="FluxoHub Banner" style="max-width:100%;height:auto;" />
+</p>
+
 # FluxoHub
 
 FluxoHub is a private project hub designed to help developers organize, present, and test their projects in one place.
