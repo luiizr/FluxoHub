@@ -1,607 +1,262 @@
-<main
-  [class.dark]="isDark()"
-  class="min-h-screen bg-[#eceff3] text-zinc-950 transition-colors duration-300 dark:bg-[#070a12] dark:text-zinc-50"
->
-  <header
-    class="sticky top-0 z-50 border-b border-zinc-300/80 bg-[#f3f1ec]/90 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-[#090d16]/90"
-  >
-    <nav
-      class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8"
-      aria-label="Navegacao principal"
-    >
-      <a href="#" class="flex min-w-0 items-center gap-3" aria-label="FluxoHub">
-        <span
-          class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-zinc-950 text-base font-black text-white shadow-sm shadow-zinc-950/20 dark:bg-white dark:text-zinc-950"
-        >
-          F
+<main class="landing-shell min-h-screen overflow-hidden bg-zinc-950 text-zinc-100">
+  <div class="hero-grid pointer-events-none absolute inset-x-0 top-0 h-[920px]"></div>
+  <div class="wine-aurora pointer-events-none absolute left-1/2 top-0 h-[780px] w-[1100px] -translate-x-1/2"></div>
+
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-zinc-950/70 backdrop-blur-xl">
+    <nav class="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-5 sm:px-8">
+      <a href="#topo" class="group flex items-center gap-3" aria-label="FluxoHub início">
+        <span class="brand-mark grid size-9 place-items-center rounded-md border border-rose-800/50 bg-rose-950/40 text-sm font-black text-rose-100">
+          FH
         </span>
-        <span class="flex min-w-0 flex-col leading-none">
-          <span class="truncate text-base font-bold tracking-normal">FluxoHub</span>
-          <span class="mt-1 hidden truncate text-xs font-medium text-zinc-500 dark:text-zinc-400 sm:block">
-            Organize. Develop. Run. Showcase.
-          </span>
-        </span>
+        <span class="text-base font-semibold tracking-wide text-white">FluxoHub</span>
       </a>
 
-      <div class="hidden items-center gap-7 text-sm font-medium text-zinc-600 dark:text-zinc-300 lg:flex">
-        <a class="transition hover:text-zinc-950 dark:hover:text-white" href="#features">Recursos</a>
-        <a class="transition hover:text-zinc-950 dark:hover:text-white" href="#control">Controle</a>
-        <a class="transition hover:text-zinc-950 dark:hover:text-white" href="#workflow">Fluxo</a>
-        <a class="transition hover:text-zinc-950 dark:hover:text-white" href="#demo">Demos</a>
-        <a class="transition hover:text-zinc-950 dark:hover:text-white" href="#vision">Visao</a>
+      <div class="hidden items-center gap-7 text-sm text-zinc-400 md:flex">
+        <a class="nav-link" href="#plataforma">Plataforma</a>
+        <a class="nav-link" href="#fluxo">Fluxo</a>
+        <a class="nav-link" href="#recursos">Recursos</a>
+        <a class="nav-link" href="#faq">FAQ</a>
       </div>
 
-      <div class="flex shrink-0 items-center gap-2 sm:gap-3">
-        <button
-          type="button"
-          (click)="toggleTheme()"
-          [attr.aria-pressed]="isDark()"
-          class="inline-flex h-10 items-center gap-2 rounded-md border border-zinc-300 bg-white/75 px-2.5 text-xs font-bold text-zinc-700 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2 dark:border-white/15 dark:bg-white/10 dark:text-zinc-200 dark:hover:bg-white/15 dark:focus:ring-white dark:focus:ring-offset-[#090d16]"
-          aria-label="Alternar tema da landing page"
-        >
-          <span class="hidden sm:inline">{{ isDark() ? 'Dark' : 'Light' }}</span>
-          <span
-            class="relative h-5 w-10 rounded-full bg-zinc-300 transition-colors dark:bg-cyan-500/40"
-            aria-hidden="true"
-          >
-            <span
-              class="absolute left-0.5 top-0.5 h-4 w-4 rounded-full bg-white shadow-sm transition-transform"
-              [class.translate-x-5]="isDark()"
-              [class.translate-x-0]="!isDark()"
-            ></span>
-          </span>
-        </button>
-
-        <a
-          routerLink="/auth"
-          class="inline-flex h-10 items-center justify-center rounded-md bg-zinc-950 px-3.5 text-sm font-semibold text-white shadow-sm shadow-zinc-950/15 transition hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200 dark:focus:ring-white dark:focus:ring-offset-[#090d16]"
-        >
-          Entrar
-        </a>
-      </div>
+      <a
+        routerLink="/auth"
+        class="rounded-md border border-rose-800/60 bg-rose-950/35 px-4 py-2 text-sm font-semibold text-rose-100 transition hover:border-rose-500/70 hover:bg-rose-900/40"
+      >
+        Entrar
+      </a>
     </nav>
   </header>
 
-  <section
-    class="relative overflow-hidden border-b border-zinc-300 bg-[#eef1f4] transition-colors duration-300 dark:border-white/10 dark:bg-[#0b1018]"
-  >
-    <div class="absolute inset-0 hero-grid opacity-75 dark:opacity-35" aria-hidden="true"></div>
-    <div
-      class="absolute left-1/2 top-16 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-200/45 blur-3xl dark:bg-cyan-500/15"
-      aria-hidden="true"
-    ></div>
-    <div
-      class="absolute right-0 top-44 h-72 w-72 rounded-full bg-indigo-200/45 blur-3xl dark:bg-indigo-500/15"
-      aria-hidden="true"
-    ></div>
+  <section id="topo" class="relative mx-auto flex min-h-[92vh] w-full max-w-7xl flex-col items-center justify-center px-5 pb-12 pt-28 text-center sm:px-8">
+    <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-rose-800/50 bg-rose-950/35 px-3 py-1 text-sm text-rose-100 shadow-[0_0_35px_rgba(76,13,24,0.32)]">
+      <span class="size-2 rounded-full bg-rose-500 shadow-[0_0_18px_rgba(225,29,72,0.75)]"></span>
+      Hub privado para projetos em desenvolvimento
+    </div>
 
-    <div
-      class="relative mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-8 lg:py-24"
-    >
-      <div class="max-w-2xl">
-        <div
-          class="inline-flex max-w-full items-center gap-2 rounded-full border border-zinc-300 bg-[#fbfaf7]/90 px-3 py-1 text-xs font-semibold text-zinc-700 shadow-sm dark:border-white/15 dark:bg-white/10 dark:text-zinc-200"
-        >
-          <span class="h-2 w-2 shrink-0 rounded-full bg-emerald-500"></span>
-          <span class="truncate">Hub privado para projetos em desenvolvimento</span>
+    <h1 class="max-w-5xl text-balance text-5xl font-black leading-[0.95] text-white sm:text-7xl lg:text-8xl">
+      Mostre projetos antes que eles virem produção.
+    </h1>
+
+    <p class="mt-6 max-w-3xl text-pretty text-lg leading-8 text-zinc-300 sm:text-xl">
+      O FluxoHub organiza repositórios, previews, status e instruções de demo em uma vitrine escura, direta e pronta para apresentações técnicas.
+    </p>
+
+    <div class="mt-9 flex flex-col items-center gap-3 sm:flex-row">
+      <a routerLink="/auth" class="magic-button">
+        Começar agora
+      </a>
+      <a href="#plataforma" class="rounded-md border border-white/15 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:border-rose-500/70 hover:bg-white/5">
+        Ver plataforma
+      </a>
+    </div>
+
+    <div class="relative mt-14 w-full max-w-5xl">
+      <div class="dashboard-glow absolute inset-0"></div>
+      <div class="dashboard-frame relative overflow-hidden rounded-lg border border-white/10 bg-zinc-950/80 p-4 text-left shadow-2xl shadow-rose-950/20">
+        <div class="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="size-3 rounded-full bg-rose-700"></span>
+            <span class="size-3 rounded-full bg-zinc-500"></span>
+            <span class="size-3 rounded-full bg-zinc-700"></span>
+          </div>
+          <span class="text-xs text-zinc-500">fluxohub.local/showcase</span>
         </div>
 
-        <h1
-          class="mt-7 text-5xl font-black leading-[0.95] tracking-normal text-zinc-950 dark:text-white sm:text-6xl lg:text-7xl"
-        >
-          FluxoHub
-        </h1>
-
-        <p class="mt-6 max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-300 sm:text-xl">
-          Organize seus projetos, registre status, conecte repositorios e prepare
-          demos temporarias para apresentar trabalhos que ainda nao estao
-          publicados em producao.
-        </p>
-
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
-            routerLink="/auth"
-            class="inline-flex h-11 items-center justify-center rounded-md bg-zinc-950 px-4 text-sm font-bold text-white shadow-lg shadow-zinc-950/15 transition hover:-translate-y-0.5 hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2 dark:bg-cyan-300 dark:text-zinc-950 dark:hover:bg-cyan-200 dark:focus:ring-cyan-200 dark:focus:ring-offset-[#0b1018]"
-          >
-            Comecar pelo hub
-            <span class="ml-2" aria-hidden="true">-></span>
-          </a>
-          <a
-            href="#workflow"
-            class="inline-flex h-11 items-center justify-center rounded-md border border-zinc-300 bg-[#fbfaf7]/80 px-4 text-sm font-bold text-zinc-800 shadow-sm transition hover:-translate-y-0.5 hover:border-zinc-400 hover:bg-white dark:border-white/15 dark:bg-white/10 dark:text-zinc-100 dark:hover:bg-white/15"
-          >
-            Entender o fluxo
-          </a>
-        </div>
-
-        <dl class="mt-10 grid max-w-xl grid-cols-3 gap-4 border-t border-zinc-300 pt-7 dark:border-white/10">
-          <div class="min-w-0">
-            <dt class="truncate text-xs font-semibold uppercase text-zinc-500 dark:text-zinc-400">Projetos</dt>
-            <dd class="mt-2 text-xl font-black text-zinc-950 dark:text-white sm:text-2xl">1 hub</dd>
-          </div>
-          <div class="min-w-0">
-            <dt class="truncate text-xs font-semibold uppercase text-zinc-500 dark:text-zinc-400">Demos</dt>
-            <dd class="mt-2 text-xl font-black text-zinc-950 dark:text-white sm:text-2xl">temporarias</dd>
-          </div>
-          <div class="min-w-0">
-            <dt class="truncate text-xs font-semibold uppercase text-zinc-500 dark:text-zinc-400">Foco</dt>
-            <dd class="mt-2 text-xl font-black text-zinc-950 dark:text-white sm:text-2xl">local</dd>
-          </div>
-        </dl>
-      </div>
-
-      <div class="relative min-w-0">
-        <div
-          class="absolute -left-3 top-8 hidden max-w-[190px] rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2.5 shadow-xl shadow-emerald-900/10 dark:border-emerald-400/25 dark:bg-emerald-400/10 md:block"
-        >
-          <p class="text-[11px] font-bold uppercase text-emerald-700 dark:text-emerald-300">Demo ativa</p>
-          <p class="mt-1 text-xs font-semibold leading-5 text-emerald-950 dark:text-emerald-100">
-            localhost exposto com controle
-          </p>
-        </div>
-
-        <div
-          class="overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-950 shadow-2xl shadow-zinc-950/20 dark:border-white/10 dark:shadow-cyan-950/20"
-        >
-          <div class="flex min-w-0 items-center justify-between gap-3 border-b border-white/10 px-3 py-3 sm:px-4">
-            <div class="flex shrink-0 items-center gap-2" aria-hidden="true">
-              <span class="h-3 w-3 rounded-full bg-red-400"></span>
-              <span class="h-3 w-3 rounded-full bg-amber-400"></span>
-              <span class="h-3 w-3 rounded-full bg-emerald-400"></span>
+        <div class="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+          <div class="rounded-md border border-white/10 bg-black/35 p-4">
+            <div class="mb-5 flex items-center justify-between">
+              <div>
+                <p class="text-sm text-zinc-500">Coleção ativa</p>
+                <h2 class="mt-1 text-xl font-bold text-white">Demos da semana</h2>
+              </div>
+              <span class="rounded-full bg-rose-950/50 px-3 py-1 text-xs font-semibold text-rose-200">Ao vivo</span>
             </div>
-            <div class="min-w-0 truncate rounded-md bg-white/10 px-2.5 py-1 text-[11px] font-medium text-zinc-300 sm:text-xs">
-              fluxo.local/project/pulseboard
-            </div>
-          </div>
 
-          <div class="grid min-w-0 gap-0 xl:grid-cols-[188px_minmax(0,1fr)]">
-            <aside class="border-b border-white/10 bg-zinc-900/80 p-3.5 xl:border-b-0 xl:border-r">
-              <div class="mb-5 flex min-w-0 items-center gap-3">
-                <img
-                  class="h-9 w-9 shrink-0 rounded-lg border border-white/10 object-cover"
-                  src="/fluxohub-banner.png"
-                  alt="Marca FluxoHub"
-                />
-                <div class="min-w-0">
-                  <p class="truncate text-sm font-bold text-white">FluxoHub</p>
-                  <p class="truncate text-xs text-zinc-400">Private workspace</p>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-2 gap-2 text-xs sm:grid-cols-4 xl:grid-cols-1">
-                <div class="truncate rounded-md bg-white px-2.5 py-2 font-semibold text-zinc-950">
-                  Projetos
-                </div>
-                <div class="truncate rounded-md px-2.5 py-2 font-medium text-zinc-400">Repositorios</div>
-                <div class="truncate rounded-md px-2.5 py-2 font-medium text-zinc-400">Sessoes</div>
-                <div class="truncate rounded-md px-2.5 py-2 font-medium text-zinc-400">Ambientes</div>
-              </div>
-            </aside>
-
-            <div class="min-w-0 bg-[#fbfaf7] p-4 dark:bg-[#111827] sm:p-5">
-              <div class="flex min-w-0 flex-col gap-3 2xl:flex-row 2xl:items-start 2xl:justify-between">
-                <div class="min-w-0">
-                  <p class="truncate text-xs font-bold uppercase text-indigo-600 dark:text-cyan-300">
-                    Projeto em destaque
-                  </p>
-                  <h2 class="mt-1 truncate text-xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-2xl">
-                    PulseBoard Analytics
-                  </h2>
-                  <p class="mt-2 max-w-lg text-sm leading-6 text-zinc-600 dark:text-zinc-300">
-                    Dashboard experimental com preview externo, repositorio privado e
-                    instrucoes para uma demo local segura.
-                  </p>
-                </div>
-                <span
-                  class="inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-bold text-emerald-700 dark:bg-emerald-400/15 dark:text-emerald-200"
-                >
-                  <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
-                  Pronto para demo
-                </span>
-              </div>
-
-              <div class="mt-5 grid gap-3 sm:grid-cols-3">
-                <div class="min-w-0 rounded-lg border border-zinc-200 bg-[#f2f4f6] p-3 dark:border-white/10 dark:bg-white/5">
-                  <p class="truncate text-[11px] font-bold uppercase text-zinc-500 dark:text-zinc-400">Status</p>
-                  <p class="mt-2 text-sm font-bold leading-5 text-zinc-950 dark:text-white">Em dev</p>
-                </div>
-                <div class="min-w-0 rounded-lg border border-zinc-200 bg-[#f2f4f6] p-3 dark:border-white/10 dark:bg-white/5">
-                  <p class="truncate text-[11px] font-bold uppercase text-zinc-500 dark:text-zinc-400">Repo</p>
-                  <p class="mt-2 truncate text-sm font-bold leading-5 text-zinc-950 dark:text-white">GitHub conectado</p>
-                </div>
-                <div class="min-w-0 rounded-lg border border-zinc-200 bg-[#f2f4f6] p-3 dark:border-white/10 dark:bg-white/5">
-                  <p class="truncate text-[11px] font-bold uppercase text-zinc-500 dark:text-zinc-400">Preview</p>
-                  <p class="mt-2 truncate text-sm font-bold leading-5 text-zinc-950 dark:text-white">URL temporaria</p>
-                </div>
-              </div>
-
-              <div class="mt-5 rounded-xl border border-zinc-200 bg-zinc-950 p-3.5 font-mono text-xs dark:border-white/10">
-                <div class="flex min-w-0 items-center justify-between gap-3 border-b border-white/10 pb-3">
-                  <span class="min-w-0 truncate font-semibold text-zinc-300">demo-session.log</span>
-                  <span class="shrink-0 rounded bg-cyan-400/15 px-2 py-1 font-sans text-[11px] text-cyan-200">
-                    container
+            <div class="space-y-3">
+              @for (project of projects; track project.name) {
+                <article class="project-row group">
+                  <span class="h-10 w-1 rounded-full {{ project.accent }}"></span>
+                  <div class="min-w-0 flex-1">
+                    <h3 class="truncate text-sm font-semibold text-white">{{ project.name }}</h3>
+                    <p class="text-xs text-zinc-500">{{ project.meta }}</p>
+                  </div>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-zinc-300 group-hover:border-rose-500/50 group-hover:text-rose-100">
+                    {{ project.status }}
                   </span>
-                </div>
-                <div class="mt-4 space-y-2 overflow-hidden text-zinc-300">
-                  <p class="truncate"><span class="text-emerald-300">$</span> validar projeto local</p>
-                  <p class="truncate"><span class="text-emerald-300">$</span> iniciar container isolado</p>
-                  <p class="truncate"><span class="text-emerald-300">$</span> gerar link de apresentacao</p>
-                  <p class="truncate text-cyan-200">preview disponivel por 30 minutos</p>
-                </div>
-              </div>
+                </article>
+              }
             </div>
           </div>
-        </div>
 
-        <div
-          class="absolute -bottom-5 right-3 max-w-[210px] rounded-lg border border-indigo-200 bg-indigo-50 px-3 py-2.5 shadow-xl shadow-indigo-900/10 dark:border-indigo-400/25 dark:bg-indigo-400/10 sm:right-8"
-        >
-          <p class="text-[11px] font-bold uppercase text-indigo-700 dark:text-indigo-200">Compartilhamento</p>
-          <p class="mt-1 text-xs font-semibold leading-5 text-indigo-950 dark:text-indigo-100">
-            pagina privada + instrucoes
-          </p>
+          <div class="relative min-h-72 rounded-md border border-rose-900/40 bg-[radial-gradient(circle_at_center,rgba(76,13,24,0.42),rgba(9,9,11,0.72)_52%,rgba(0,0,0,0.9))] p-5">
+            <div class="orbit-ring"></div>
+            <div class="orbit-ring orbit-ring-alt"></div>
+            <div class="absolute left-1/2 top-1/2 grid size-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-rose-700/40 bg-zinc-950 text-center shadow-[0_0_55px_rgba(190,18,60,0.25)]">
+              <span class="text-xs uppercase tracking-[0.25em] text-rose-200">Demo</span>
+            </div>
+            <span class="orbit-dot orbit-dot-one">Repo</span>
+            <span class="orbit-dot orbit-dot-two">Docs</span>
+            <span class="orbit-dot orbit-dot-three">Link</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section
-    id="features"
-    class="border-b border-zinc-300 bg-[#eceff3] py-16 transition-colors duration-300 dark:border-white/10 dark:bg-[#080c14] sm:py-20"
-  >
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <p class="text-sm font-bold uppercase text-indigo-600 dark:text-cyan-300">Por que existe</p>
-        <h2 class="mt-3 text-3xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-4xl">
-          Nem todo projeto precisa estar em producao para ser bem apresentado.
-        </h2>
-        <p class="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
-          A landing foi pensada para comunicar o valor central do FluxoHub:
-          organizar experimentos, estudos e sistemas locais sem forcar deploys
-          permanentes antes da hora.
+  <section class="relative border-y border-white/10 bg-black/30 py-4">
+    <div class="marquee">
+      <div class="marquee-track">
+        @for (item of marqueeItems; track item) {
+          <span>{{ item }}</span>
+        }
+        @for (item of marqueeItems; track item) {
+          <span>{{ item }}</span>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="plataforma" class="relative mx-auto grid w-full max-w-7xl gap-6 px-5 py-24 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
+    <div>
+      <p class="section-kicker">Plataforma</p>
+      <h2 class="mt-3 max-w-xl text-4xl font-black text-white sm:text-5xl">Um hub para o trabalho que ainda está ganhando forma.</h2>
+      <p class="mt-5 max-w-xl text-lg leading-8 text-zinc-400">
+        Inspirada na energia visual do Magic UI, esta landing usa movimento, profundidade e microinterações para apresentar um produto técnico sem perder clareza.
+      </p>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      @for (feature of features; track feature.title) {
+        <article class="glow-card group rounded-lg border border-white/10 bg-zinc-900/70 p-5 transition hover:-translate-y-1 hover:border-rose-700/40">
+          <div class="mb-5 grid size-11 place-items-center rounded-md border border-rose-800/50 bg-rose-950/40 text-rose-100">
+            <span class="size-3 rounded-full bg-rose-500 shadow-[0_0_24px_rgba(225,29,72,0.72)]"></span>
+          </div>
+          <h3 class="text-lg font-bold text-white">{{ feature.title }}</h3>
+          <p class="mt-3 leading-7 text-zinc-400">{{ feature.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section id="fluxo" class="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-8">
+    <div class="mb-10 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
+      <div>
+        <p class="section-kicker">Fluxo interativo</p>
+        <h2 class="mt-3 max-w-3xl text-4xl font-black text-white sm:text-5xl">Escolha uma etapa e veja como o showcase se monta.</h2>
+      </div>
+      <div class="workflow-tabs" role="tablist" aria-label="Etapas do FluxoHub">
+        @for (workflow of workflows; track workflow.key) {
+          <button
+            type="button"
+            role="tab"
+            class="workflow-tab"
+            [class.is-active]="activeWorkflow() === workflow.key"
+            [attr.aria-selected]="activeWorkflow() === workflow.key"
+            (click)="setWorkflow(workflow.key)"
+          >
+            {{ workflow.label }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="workflow-panel grid gap-6 rounded-lg border border-white/10 bg-zinc-950/75 p-5 sm:p-8 lg:grid-cols-[0.8fr_1.2fr]">
+      <div class="rounded-lg border border-rose-900/40 bg-black/30 p-6">
+        <p class="text-sm uppercase tracking-[0.28em] text-rose-200">Resultado médio</p>
+        <strong class="mt-5 block text-7xl font-black text-white">{{ activeWorkflowDetails().metric }}</strong>
+        <p class="mt-5 text-zinc-400">Menos improviso antes de mostrar uma ideia, um MVP ou um produto em validação.</p>
+      </div>
+
+      <div class="flex flex-col justify-between gap-8">
+        <div>
+          <h3 class="text-3xl font-black text-white">{{ activeWorkflowDetails().title }}</h3>
+          <p class="mt-4 max-w-2xl text-lg leading-8 text-zinc-400">{{ activeWorkflowDetails().description }}</p>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-3">
+          @for (step of activeWorkflowDetails().steps; track step; let index = $index) {
+            <div class="step-card rounded-md border border-white/10 bg-white/[0.03] p-4">
+              <span class="text-sm font-bold text-rose-300">0{{ index + 1 }}</span>
+              <p class="mt-3 text-sm font-semibold text-zinc-100">{{ step }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="recursos" class="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-8">
+    <div class="grid gap-4 md:grid-cols-3">
+      @for (metric of metrics; track metric.label) {
+        <article class="metric-card rounded-lg border border-white/10 bg-zinc-900/70 p-6">
+          <strong class="text-5xl font-black text-white">{{ metric.value }}</strong>
+          <p class="mt-3 text-sm uppercase tracking-[0.2em] text-zinc-500">{{ metric.label }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="mt-6 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <article class="rounded-lg border border-white/10 bg-zinc-900/60 p-6 sm:p-8">
+        <p class="section-kicker">Recursos</p>
+        <h2 class="mt-3 max-w-2xl text-4xl font-black text-white">Do README ao pitch, com tudo no mesmo lugar.</h2>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <div class="resource-line">Status de desenvolvimento</div>
+          <div class="resource-line">Links de repositório</div>
+          <div class="resource-line">Instruções de demo</div>
+          <div class="resource-line">Previews externos</div>
+          <div class="resource-line">Sessões temporárias</div>
+          <div class="resource-line">Páginas públicas ou privadas</div>
+        </div>
+      </article>
+
+      <article class="rounded-lg border border-rose-900/40 bg-rose-950/20 p-6 sm:p-8">
+        <h3 class="text-2xl font-black text-white">Pronto para evoluir para SaaS.</h3>
+        <p class="mt-4 leading-8 text-zinc-300">
+          A primeira versão nasce para uso pessoal, mas a base conversa com descoberta de projetos, validação guiada, previews controlados e portfólios técnicos mais ricos.
         </p>
-      </div>
-
-      <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <article class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.04]">
-          <div class="grid h-11 w-11 place-items-center rounded-md bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
-            <span class="text-lg font-black">01</span>
-          </div>
-          <h3 class="mt-5 text-lg font-black text-zinc-950 dark:text-white">Catalogo de projetos</h3>
-          <p class="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
-            Registre nome, descricao, stack, status e links importantes em uma
-            pagina pronta para consulta.
-          </p>
-        </article>
-
-        <article class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.04]">
-          <div class="grid h-11 w-11 place-items-center rounded-md bg-cyan-600 text-white">
-            <span class="text-lg font-black">02</span>
-          </div>
-          <h3 class="mt-5 text-lg font-black text-zinc-950 dark:text-white">Repositorios conectados</h3>
-          <p class="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
-            Centralize referencias para GitHub ou GitLab e reduza o atrito na hora
-            de explicar o codigo.
-          </p>
-        </article>
-
-        <article class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.04]">
-          <div class="grid h-11 w-11 place-items-center rounded-md bg-emerald-600 text-white">
-            <span class="text-lg font-black">03</span>
-          </div>
-          <h3 class="mt-5 text-lg font-black text-zinc-950 dark:text-white">Demos temporarias</h3>
-          <p class="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
-            Prepare sessoes locais controladas para demonstrar projetos ainda
-            privados ou incompletos.
-          </p>
-        </article>
-
-        <article class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.04]">
-          <div class="grid h-11 w-11 place-items-center rounded-md bg-amber-500 text-white">
-            <span class="text-lg font-black">04</span>
-          </div>
-          <h3 class="mt-5 text-lg font-black text-zinc-950 dark:text-white">Portfolio simples</h3>
-          <p class="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
-            Mostre trabalhos em progresso com contexto suficiente para recrutadores,
-            clientes ou colegas tecnicos.
-          </p>
-        </article>
-      </div>
+        <a routerLink="/auth" class="mt-8 inline-flex rounded-md bg-rose-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-rose-600">
+          Acessar área privada
+        </a>
+      </article>
     </div>
   </section>
 
-  <section
-    id="control"
-    class="border-b border-zinc-300 bg-[#f1efe8] py-16 transition-colors duration-300 dark:border-white/10 dark:bg-[#0d121c] sm:py-20"
-  >
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-        <div>
-          <p class="text-sm font-bold uppercase text-emerald-700 dark:text-emerald-300">Complemento essencial</p>
-          <h2 class="mt-3 text-3xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-4xl">
-            Cada projeto ganha uma ficha tecnica pronta para apresentacao.
-          </h2>
-          <p class="mt-5 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
-            Alem do visual de portfolio, o FluxoHub pode mostrar requisitos,
-            comandos, riscos conhecidos e criterios de demo. Isso deixa a
-            apresentacao mais confiavel quando o projeto ainda vive no ambiente
-            local.
-          </p>
-        </div>
+  <section id="faq" class="relative mx-auto w-full max-w-4xl px-5 py-24 sm:px-8">
+    <div class="text-center">
+      <p class="section-kicker">FAQ</p>
+      <h2 class="mt-3 text-4xl font-black text-white sm:text-5xl">Perguntas rápidas, respostas diretas.</h2>
+    </div>
 
-        <div class="grid gap-4 md:grid-cols-2">
-          <article class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-5 shadow-sm dark:border-white/10 dark:bg-white/[0.04]">
-            <p class="text-xs font-bold uppercase text-zinc-500 dark:text-zinc-400">Ficha</p>
-            <h3 class="mt-2 text-lg font-black text-zinc-950 dark:text-white">Resumo tecnico</h3>
-            <ul class="mt-4 space-y-3 text-sm text-zinc-600 dark:text-zinc-300">
-              <li class="flex gap-3">
-                <span class="mt-1.5 h-2 w-2 rounded-full bg-cyan-500"></span>
-                Stack, versao e dependencias principais
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-1.5 h-2 w-2 rounded-full bg-cyan-500"></span>
-                Instrucoes para rodar e testar
-              </li>
-              <li class="flex gap-3">
-                <span class="mt-1.5 h-2 w-2 rounded-full bg-cyan-500"></span>
-                Escopo do que deve ser demonstrado
-              </li>
-            </ul>
-          </article>
-
-          <article class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-5 shadow-sm dark:border-white/10 dark:bg-white/[0.04]">
-            <p class="text-xs font-bold uppercase text-zinc-500 dark:text-zinc-400">Confianca</p>
-            <h3 class="mt-2 text-lg font-black text-zinc-950 dark:text-white">Estado da demo</h3>
-            <div class="mt-4 space-y-3">
-              <div class="flex items-center justify-between gap-4 rounded-md bg-[#edf2f3] px-3 py-2 dark:bg-white/5">
-                <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Build</span>
-                <span class="rounded-full bg-emerald-100 px-2 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-400/15 dark:text-emerald-200">
-                  ok
-                </span>
-              </div>
-              <div class="flex items-center justify-between gap-4 rounded-md bg-[#edf2f3] px-3 py-2 dark:bg-white/5">
-                <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Banco</span>
-                <span class="rounded-full bg-amber-100 px-2 py-1 text-xs font-bold text-amber-700 dark:bg-amber-400/15 dark:text-amber-200">
-                  seed
-                </span>
-              </div>
-              <div class="flex items-center justify-between gap-4 rounded-md bg-[#edf2f3] px-3 py-2 dark:bg-white/5">
-                <span class="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Exposicao</span>
-                <span class="rounded-full bg-cyan-100 px-2 py-1 text-xs font-bold text-cyan-700 dark:bg-cyan-400/15 dark:text-cyan-200">
-                  30 min
-                </span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
+    <div class="mt-10 space-y-3">
+      @for (faq of faqs; track faq.question; let index = $index) {
+        <article class="faq-item rounded-lg border border-white/10 bg-zinc-900/70">
+          <button
+            type="button"
+            class="flex w-full items-center justify-between gap-5 p-5 text-left"
+            [attr.aria-expanded]="openFaq() === index"
+            (click)="toggleFaq(index)"
+          >
+            <span class="text-lg font-bold text-white">{{ faq.question }}</span>
+            <span class="faq-icon" [class.is-open]="openFaq() === index"></span>
+          </button>
+          @if (openFaq() === index) {
+            <p class="px-5 pb-5 leading-8 text-zinc-400">{{ faq.answer }}</p>
+          }
+        </article>
+      }
     </div>
   </section>
 
-  <section class="bg-[#f5f3ee] py-16 transition-colors duration-300 dark:bg-[#090d16] sm:py-20" id="workflow">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <div>
-          <p class="text-sm font-bold uppercase text-emerald-600 dark:text-emerald-300">Fluxo ideal</p>
-          <h2 class="mt-3 text-3xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-4xl">
-            Do projeto local a uma apresentacao compartilhavel.
-          </h2>
-          <p class="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
-            A experiencia foi desenhada para parecer com uma bancada de trabalho:
-            voce sabe o que existe, o que roda, o que pode ser mostrado e qual
-            cuidado cada demo exige.
-          </p>
-        </div>
-
-        <div class="space-y-4">
-          <div class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-5 dark:border-white/10 dark:bg-white/[0.04]">
-            <div class="flex gap-4">
-              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-zinc-950 text-sm font-black text-white dark:bg-white dark:text-zinc-950">
-                1
-              </span>
-              <div>
-                <h3 class="font-black text-zinc-950 dark:text-white">Cadastre o projeto</h3>
-                <p class="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
-                  Defina descricao, stack, status, instrucoes de execucao e o que
-                  deve ser apresentado.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-5 dark:border-white/10 dark:bg-white/[0.04]">
-            <div class="flex gap-4">
-              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-cyan-600 text-sm font-black text-white">
-                2
-              </span>
-              <div>
-                <h3 class="font-black text-zinc-950 dark:text-white">Anexe links e contexto</h3>
-                <p class="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
-                  Inclua repositorio, preview externo quando houver e notas de demo
-                  para evitar explicacoes soltas.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-5 dark:border-white/10 dark:bg-white/[0.04]">
-            <div class="flex gap-4">
-              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-emerald-600 text-sm font-black text-white">
-                3
-              </span>
-              <div>
-                <h3 class="font-black text-zinc-950 dark:text-white">Valide a demo local</h3>
-                <p class="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
-                  Confirme comandos, portas, dependencias e a possibilidade de
-                  rodar em ambiente isolado.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-5 dark:border-white/10 dark:bg-white/[0.04]">
-            <div class="flex gap-4">
-              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-amber-500 text-sm font-black text-white">
-                4
-              </span>
-              <div>
-                <h3 class="font-black text-zinc-950 dark:text-white">Compartilhe com controle</h3>
-                <p class="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
-                  Gere uma pagina clara para apresentar o projeto, com links,
-                  instrucoes e validade da sessao.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="demo" class="border-y border-zinc-300 bg-zinc-950 py-16 text-white dark:border-white/10 sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-center">
-        <div class="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-          <div class="border-b border-white/10 p-5">
-            <p class="text-sm font-bold uppercase text-cyan-300">Pagina publica controlada</p>
-            <h2 class="mt-3 text-3xl font-black tracking-normal sm:text-4xl">
-              O projeto ganha contexto antes do clique no preview.
-            </h2>
-          </div>
-
-          <div class="grid gap-0 md:grid-cols-[minmax(0,1fr)_240px]">
-            <div class="p-5 sm:p-6">
-              <div class="rounded-xl bg-[#fbfaf7] p-5 text-zinc-950">
-                <div class="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                  <div class="min-w-0">
-                    <p class="truncate text-xs font-bold uppercase text-indigo-600">E-commerce Lab</p>
-                    <h3 class="mt-1 text-2xl font-black">Checkout experimental</h3>
-                  </div>
-                  <span class="w-fit shrink-0 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-700">
-                    beta
-                  </span>
-                </div>
-                <p class="mt-4 text-sm leading-6 text-zinc-600">
-                  Prototipo full-stack com API Node, banco PostgreSQL e interface
-                  Angular. A demo mostra fluxo de carrinho, pagamento simulado e
-                  painel administrativo.
-                </p>
-                <div class="mt-5 grid gap-3 sm:grid-cols-2">
-                  <div class="min-w-0 rounded-lg border border-zinc-200 p-4">
-                    <p class="truncate text-xs font-bold uppercase text-zinc-500">Repositorio</p>
-                    <p class="mt-2 break-all text-sm font-bold">github.com/user/checkout-lab</p>
-                  </div>
-                  <div class="min-w-0 rounded-lg border border-zinc-200 p-4">
-                    <p class="truncate text-xs font-bold uppercase text-zinc-500">Sessao</p>
-                    <p class="mt-2 text-sm font-bold">expira em 28 minutos</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <aside class="border-t border-white/10 bg-white/[0.04] p-5 md:border-l md:border-t-0">
-              <p class="text-sm font-bold text-white">Checklist da demo</p>
-              <ul class="mt-4 space-y-3 text-sm text-zinc-300">
-                <li class="flex gap-3">
-                  <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-emerald-400"></span>
-                  Build local validado
-                </li>
-                <li class="flex gap-3">
-                  <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-emerald-400"></span>
-                  Variaveis carregadas
-                </li>
-                <li class="flex gap-3">
-                  <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-cyan-300"></span>
-                  Porta 4200 exposta
-                </li>
-                <li class="flex gap-3">
-                  <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-amber-300"></span>
-                  Dados ficticios ativos
-                </li>
-              </ul>
-            </aside>
-          </div>
-        </div>
-
-        <div>
-          <p class="text-sm font-bold uppercase text-emerald-300">Inspiracao de produto</p>
-          <h2 class="mt-3 text-3xl font-black tracking-normal sm:text-4xl">
-            Preview com a clareza de uma plataforma moderna de dev.
-          </h2>
-          <p class="mt-5 text-lg leading-8 text-zinc-300">
-            A UI combina padroes familiares de dashboards, previews e ambientes
-            isolados: status visivel, comandos rastreaveis, links importantes e
-            uma acao principal evidente.
-          </p>
-          <div class="mt-8 grid gap-3 sm:grid-cols-2">
-            <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4">
-              <p class="text-2xl font-black">30 min</p>
-              <p class="mt-1 text-sm text-zinc-400">janela sugerida para sessoes temporarias</p>
-            </div>
-            <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4">
-              <p class="text-2xl font-black">1 link</p>
-              <p class="mt-1 text-sm text-zinc-400">repo, preview e instrucoes no mesmo lugar</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="vision" class="bg-[#eceff3] py-16 transition-colors duration-300 dark:bg-[#070a12] sm:py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-        <div>
-          <img
-            class="w-full rounded-2xl border border-zinc-300 bg-[#fbfaf7] object-cover shadow-xl shadow-zinc-950/10 dark:border-white/10 dark:bg-white/5 dark:shadow-black/20"
-            src="/fluxohub-banner.png"
-            alt="FluxoHub: Organize. Develop. Run. Showcase."
-          />
-        </div>
-
-        <div>
-          <p class="text-sm font-bold uppercase text-indigo-600 dark:text-cyan-300">Visao</p>
-          <h2 class="mt-3 text-3xl font-black tracking-normal text-zinc-950 dark:text-white sm:text-4xl">
-            Um portfolio que tambem entende o backstage tecnico.
-          </h2>
-          <p class="mt-5 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
-            A primeira versao pode focar em uso pessoal, execucao local e demos
-            controladas. A estrutura visual ja prepara espaco para evoluir para
-            paginas publicas, projetos privados, historico de sessoes e um modelo
-            SaaS no futuro.
-          </p>
-
-          <div class="mt-8 grid gap-4 sm:grid-cols-3">
-            <div class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-4 dark:border-white/10 dark:bg-white/[0.04]">
-              <p class="text-sm font-black text-zinc-950 dark:text-white">Angular</p>
-              <p class="mt-2 text-xs leading-5 text-zinc-600 dark:text-zinc-400">interface rapida e modular</p>
-            </div>
-            <div class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-4 dark:border-white/10 dark:bg-white/[0.04]">
-              <p class="text-sm font-black text-zinc-950 dark:text-white">Node.js</p>
-              <p class="mt-2 text-xs leading-5 text-zinc-600 dark:text-zinc-400">orquestracao de demos</p>
-            </div>
-            <div class="rounded-lg border border-zinc-300 bg-[#fbfaf7] p-4 dark:border-white/10 dark:bg-white/[0.04]">
-              <p class="text-sm font-black text-zinc-950 dark:text-white">PostgreSQL</p>
-              <p class="mt-2 text-xs leading-5 text-zinc-600 dark:text-zinc-400">catalogo e historico</p>
-            </div>
-          </div>
-
-          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a
-              routerLink="/auth"
-              class="inline-flex h-11 items-center justify-center rounded-md bg-zinc-950 px-4 text-sm font-bold text-white shadow-lg shadow-zinc-950/15 transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
-            >
-              Acessar FluxoHub
-            </a>
-            <a
-              href="#features"
-              class="inline-flex h-11 items-center justify-center rounded-md border border-zinc-300 bg-[#fbfaf7] px-4 text-sm font-bold text-zinc-800 transition hover:bg-white dark:border-white/15 dark:bg-white/10 dark:text-zinc-100 dark:hover:bg-white/15"
-            >
-              Rever recursos
-            </a>
-          </div>
-        </div>
-      </div>
+  <section class="relative px-5 pb-24 sm:px-8">
+    <div class="mx-auto max-w-5xl rounded-lg border border-rose-900/40 bg-[linear-gradient(135deg,rgba(76,13,24,0.42),rgba(9,9,11,0.96)_42%,rgba(0,0,0,1))] p-8 text-center shadow-2xl shadow-rose-950/20 sm:p-12">
+      <p class="section-kicker">FluxoHub</p>
+      <h2 class="mt-3 text-4xl font-black text-white sm:text-6xl">Sua bancada de projetos pode virar uma experiência de apresentação.</h2>
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-zinc-300">
+        Catalogue, prepare e compartilhe seus experimentos com uma interface que parece viva sem atrapalhar quem precisa avaliar.
+      </p>
+      <a routerLink="/auth" class="magic-button mt-8">
+        Criar meu hub
+      </a>
     </div>
   </section>
 </main>
