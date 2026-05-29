@@ -1,0 +1,51 @@
+<header class="topbar">
+  <a class="brand" href="/" aria-label="FluxoHub">
+    <img src="/fluxohub-logo2.png" alt="" />
+  </a>
+
+  <div class="search-area">
+    <label class="search-box" aria-label="Buscar projetos">
+      <span class="search-glyph"></span>
+      <input type="search" placeholder="Busque projetos, stacks e criadores" />
+    </label>
+    <button
+      class="filter-trigger"
+      type="button"
+      aria-label="Abrir filtros"
+      [attr.aria-expanded]="filterMenuOpen"
+      (click)="toggleFilterMenu()"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
+        <path d="M4 7h16M7 12h10M10 17h4" />
+      </svg>
+    </button>
+
+    @if (filterMenuOpen) {
+      <div class="filter-popover" role="dialog" aria-label="Filtros do feed">
+        <div class="filter-popover-head">
+          <strong>Filtros do feed</strong>
+          <button type="button" aria-label="Fechar filtros" (click)="closeFilterMenu()">x</button>
+        </div>
+        <div class="filter-options">
+          @for (filter of filters; track filter.label) {
+            <button type="button" [class.active]="filter.active">
+              <span>{{ filter.label }}</span>
+              @if (filter.count) {
+                <small>{{ filter.count }}</small>
+              }
+            </button>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="top-actions">
+    <button class="language-button" type="button" aria-label="Idioma portugues do Brasil">
+      <span class="flag-br" aria-hidden="true"></span>
+      <span>PT-BR</span>
+    </button>
+    <a class="login-link" routerLink="/auth">Entrar</a>
+    <a class="register-link" routerLink="/auth">Registrar</a>
+  </div>
+</header>

@@ -1,0 +1,410 @@
+:host {
+  display: block;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  background: #f4f6f8;
+  color: #17202a;
+  font-size: 13px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.dashboard-page {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.post-header,
+.project-nav,
+.post-stats,
+.panel-title,
+.create-story,
+.story-item,
+.event-item,
+.suggested-page,
+.compact-person {
+  display: flex;
+  align-items: center;
+}
+
+.project-logo,
+.story-item span,
+.suggested-page span,
+.compact-person span,
+.create-story span {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: #fff;
+  font-weight: 800;
+}
+
+.post-stats button {
+  min-height: 38px;
+  border-radius: 8px;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(420px, 720px) 300px 172px;
+  gap: 18px;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 18px;
+  overflow: hidden;
+}
+
+.dashboard-layout > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+.left-sidebar,
+.right-panel,
+.contact-rail {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.left-sidebar::-webkit-scrollbar,
+.right-panel::-webkit-scrollbar,
+.contact-rail::-webkit-scrollbar,
+.feed-column::-webkit-scrollbar {
+  display: none;
+}
+
+.project-post,
+.panel-card {
+  border: 1px solid #e5eaf0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.right-panel,
+.contact-rail {
+  display: grid;
+  gap: 12px;
+}
+
+.feed-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.feed-column,
+app-project-carousel {
+  min-width: 0;
+  max-width: 100%;
+}
+
+app-project-carousel {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.post-header button,
+.panel-title button {
+  border: 0;
+  background: transparent;
+  color: #7b8794;
+  font-weight: 800;
+}
+
+.project-post {
+  padding: 16px;
+}
+
+.post-header {
+  gap: 12px;
+}
+
+.project-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+}
+
+.post-header h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.post-header p,
+.panel-card small,
+.post-copy {
+  color: #667085;
+}
+
+.post-header p {
+  margin: 3px 0 0;
+  font-size: 12px;
+}
+
+.post-header button {
+  margin-left: auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+}
+
+.post-copy {
+  margin: 14px 0;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.project-banner {
+  display: grid;
+  place-items: center;
+  min-height: 230px;
+  overflow: hidden;
+  border-radius: 8px;
+  color: #17202a;
+}
+
+.project-banner img {
+  width: 100%;
+  height: 100%;
+  min-height: 230px;
+  object-fit: cover;
+}
+
+.project-banner div {
+  display: grid;
+  gap: 8px;
+  max-width: 78%;
+  text-align: center;
+}
+
+.project-banner strong {
+  font-size: 22px;
+}
+
+.project-banner span {
+  color: #475569;
+}
+
+.project-nav {
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.project-nav a {
+  padding: 8px 12px;
+  border: 1px solid #e5eaf0;
+  border-radius: 999px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.post-stats {
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #edf1f5;
+}
+
+.post-stats button {
+  flex: 1;
+  border: 0;
+  background: #f8fafc;
+  color: #475569;
+}
+
+.post-stats strong {
+  color: #17202a;
+}
+
+.panel-card {
+  padding: 14px;
+}
+
+.panel-title {
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.panel-title h2 {
+  margin: 0;
+  font-size: 13px;
+}
+
+.panel-title a,
+.see-all {
+  color: #1473e6;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.create-story,
+.story-item,
+.event-item,
+.suggested-page {
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.create-story span {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #eef6ff;
+  color: #1473e6;
+  font-size: 22px;
+}
+
+.story-item,
+.event-item,
+.suggested-page {
+  border-top: 1px solid #f0f3f6;
+}
+
+.story-item span,
+.suggested-page span,
+.compact-person span {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 11px;
+}
+
+.story-item strong,
+.event-item strong,
+.suggested-page strong,
+.compact-person strong {
+  display: block;
+  font-size: 13px;
+}
+
+.see-all {
+  display: block;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.event-item span {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #fff7ed;
+  color: #f97316;
+  font-weight: 900;
+}
+
+.contact-rail section {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.contact-rail h2 {
+  margin: 0 0 2px;
+  color: #7b8794;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.compact-person {
+  gap: 9px;
+  min-height: 34px;
+}
+
+@media (max-width: 1320px) {
+  .dashboard-layout {
+    grid-template-columns: 230px minmax(0, 1fr) 290px;
+  }
+
+  .contact-rail {
+    display: none;
+  }
+}
+
+@media (max-width: 980px) {
+  :host {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .dashboard-page {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+  }
+
+  .left-sidebar,
+  .right-panel {
+    height: auto;
+    overflow: visible;
+  }
+
+  .feed-column {
+    height: auto;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 640px) {
+  .post-stats {
+    flex-wrap: wrap;
+  }
+
+  .post-stats button {
+    flex: 1 1 120px;
+  }
+
+  .dashboard-layout {
+    padding: 12px;
+  }
+
+  .project-banner,
+  .project-banner img {
+    min-height: 180px;
+  }
+
+  .project-banner strong {
+    font-size: 22px;
+  }
+}

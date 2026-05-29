@@ -1,0 +1,62 @@
+<aside class="sidebar-shell" aria-label="Menu lateral">
+  <section class="profile-card">
+    <span class="avatar">{{ profileInitials }}</span>
+    <div>
+      <strong>{{ profileName }}</strong>
+      <p>{{ profileSubtitle }}</p>
+    </div>
+  </section>
+
+  <nav class="side-nav" aria-label="Navegacao principal">
+    @for (item of navItems; track item.label) {
+      <a class="side-link" [class.active]="item.active" href="#">
+        <span class="side-icon" aria-hidden="true">
+          @switch (item.icon) {
+            @case ('feed') {
+              <svg viewBox="0 0 24 24">
+                <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h5A1.5 1.5 0 0 1 12 5.5v5a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 4 10.5v-5Zm8 8A1.5 1.5 0 0 1 13.5 12h5a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5h-5a1.5 1.5 0 0 1-1.5-1.5v-5ZM5.5 14h3A1.5 1.5 0 0 1 10 15.5v3A1.5 1.5 0 0 1 8.5 20h-3A1.5 1.5 0 0 1 4 18.5v-3A1.5 1.5 0 0 1 5.5 14ZM15.5 4h3A1.5 1.5 0 0 1 20 5.5v3A1.5 1.5 0 0 1 18.5 10h-3A1.5 1.5 0 0 1 14 8.5v-3A1.5 1.5 0 0 1 15.5 4Z" />
+              </svg>
+            }
+            @case ('companies') {
+              <svg viewBox="0 0 24 24">
+                <path d="M5 20V6.5A2.5 2.5 0 0 1 7.5 4h5A2.5 2.5 0 0 1 15 6.5V20m0-10h1.5A2.5 2.5 0 0 1 19 12.5V20M8 8h4M8 12h4M8 16h4" />
+              </svg>
+            }
+            @case ('users') {
+              <svg viewBox="0 0 24 24">
+                <path d="M8.5 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm7-1a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.5 20a5 5 0 0 1 10 0M13 18.5a4 4 0 0 1 7.5 1.5" />
+              </svg>
+            }
+            @case ('projects') {
+              <svg viewBox="0 0 24 24">
+                <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11Zm4 2h8M8 12h5M8 15.5h8" />
+              </svg>
+            }
+            @default {
+              <svg viewBox="0 0 24 24">
+                <path d="M5 9.5 12 5l7 4.5V19a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V9.5Zm4 10v-6h6v6" />
+              </svg>
+            }
+          }
+        </span>
+        <span>{{ item.label }}</span>
+        @if (item.badge) {
+          <small>{{ item.badge }}</small>
+        }
+      </a>
+    }
+  </nav>
+
+  <section class="followed-pages">
+    <h2>{{ listTitle }}</h2>
+    @for (page of followedEntities; track page.name) {
+      <a class="page-pill" href="#">
+        <span [style.background]="page.color">{{ page.initials }}</span>
+        <strong>{{ page.name }}</strong>
+        @if (page.news) {
+          <small>{{ page.news }}</small>
+        }
+      </a>
+    }
+  </section>
+</aside>

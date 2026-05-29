@@ -1,1 +1,139 @@
-<p>dashboard works!</p>
+<div class="dashboard-page" (wheel)="scrollFeedFromEmptySpace($event)">
+  <app-topbar [filters]="feedFilters"></app-topbar>
+
+  <div class="dashboard-layout">
+    <app-sidebar
+      class="left-sidebar"
+      [navItems]="navItems"
+      [followedEntities]="followedEntities"
+      listTitle="Empresas e usuários"
+    ></app-sidebar>
+
+    <main #feedColumn class="feed-column">
+      <app-project-import-panel></app-project-import-panel>
+
+      <app-project-carousel [projects]="featuredProjects"></app-project-carousel>
+
+      @for (project of projectFeed; track project.title) {
+        <article class="project-post">
+          <header class="post-header">
+            <span class="project-logo" [style.background]="project.accent">{{ project.initials }}</span>
+            <div>
+              <h2>{{ project.title }}</h2>
+              <p>{{ project.owner }} · {{ project.time }}</p>
+            </div>
+            <button type="button" aria-label="Mais opcoes">...</button>
+          </header>
+
+          <p class="post-copy">{{ project.description }}</p>
+
+          <div class="project-banner" [style.background]="project.banner">
+            @if (project.image; as image) {
+              <img [src]="image" [alt]="project.title" />
+            } @else {
+              <div>
+                <strong>{{ project.previewTitle }}</strong>
+                <span>{{ project.previewSubtitle }}</span>
+              </div>
+            }
+          </div>
+
+          <nav class="project-nav" aria-label="Navegacao da pagina do projeto">
+            @for (link of project.links; track link) {
+              <a href="#">{{ link }}</a>
+            }
+          </nav>
+
+          <footer class="post-stats">
+            @for (stat of project.stats; track stat.label) {
+              <button type="button">
+                <strong>{{ stat.value }}</strong>
+                <span>{{ stat.label }}</span>
+              </button>
+            }
+          </footer>
+        </article>
+      }
+    </main>
+
+    <aside class="right-panel" aria-label="Descoberta">
+      <section class="panel-card stories-card">
+        <div class="panel-title">
+          <h2>Projetos em alta</h2>
+          <button type="button" aria-label="Ver mais">...</button>
+        </div>
+        <a class="create-story" href="#">
+          <span>+</span>
+          <div>
+            <strong>Criar empresa</strong>
+            <small>Publique logo, banner e projetos.</small>
+          </div>
+        </a>
+        @for (story of highlightedProjects; track story.name) {
+          <a class="story-item" href="#">
+            <span [style.background]="story.color">{{ story.initials }}</span>
+            <div>
+              <strong>{{ story.name }}</strong>
+              <small>{{ story.meta }}</small>
+            </div>
+          </a>
+        }
+        <a class="see-all" href="#">Ver todos</a>
+      </section>
+
+      <section class="panel-card">
+        <div class="panel-title">
+          <h2>Eventos</h2>
+          <button type="button" aria-label="Mais eventos">...</button>
+        </div>
+        @for (event of events; track event.title) {
+          <a class="event-item" href="#">
+            <span>{{ event.day }}</span>
+            <div>
+              <strong>{{ event.title }}</strong>
+              <small>{{ event.meta }}</small>
+            </div>
+          </a>
+        }
+      </section>
+
+      <section class="panel-card suggested-card">
+        <div class="panel-title">
+          <h2>Empresas sugeridas</h2>
+          <a href="#">Ver</a>
+        </div>
+        @for (page of suggestedCompanies; track page.name) {
+          <a class="suggested-page" href="#">
+            <span [style.background]="page.color">{{ page.initials }}</span>
+            <div>
+              <strong>{{ page.name }}</strong>
+              <small>{{ page.category }}</small>
+            </div>
+          </a>
+        }
+      </section>
+    </aside>
+
+    <aside class="contact-rail" aria-label="Atalhos sociais">
+      <section>
+        <h2>Suas empresas</h2>
+        @for (page of myCompanies; track page.name) {
+          <a class="compact-person" href="#">
+            <span [style.background]="page.color">{{ page.initials }}</span>
+            <strong>{{ page.name }}</strong>
+          </a>
+        }
+      </section>
+
+      <section>
+        <h2>Criadores</h2>
+        @for (creator of creators; track creator.name) {
+          <a class="compact-person" href="#">
+            <span [style.background]="creator.color">{{ creator.initials }}</span>
+            <strong>{{ creator.name }}</strong>
+          </a>
+        }
+      </section>
+    </aside>
+  </div>
+</div>
