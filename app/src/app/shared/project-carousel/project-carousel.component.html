@@ -1,0 +1,25 @@
+<section class="carousel-card" aria-label="Projetos em destaque">
+  <div class="carousel-heading">
+    <h2>Projetos em destaque</h2>
+    <a href="#">Ver todos</a>
+  </div>
+
+  <div class="carousel-viewport">
+    <div class="carousel-track">
+      @for (project of projects; track project.title) {
+        <a class="featured-project" href="#">
+          <span [style.background]="project.color"></span>
+          <strong>{{ project.title }}</strong>
+          <small>{{ project.company }} · {{ project.stack }}</small>
+        </a>
+      }
+      @for (project of projects; track project.title + '-copy') {
+        <a class="featured-project" href="#" aria-hidden="true" tabindex="-1">
+          <span [style.background]="project.color"></span>
+          <strong>{{ project.title }}</strong>
+          <small>{{ project.company }} · {{ project.stack }}</small>
+        </a>
+      }
+    </div>
+  </div>
+</section>
