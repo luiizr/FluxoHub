@@ -26,5 +26,5 @@ export class SidebarComponent {
   @Input() listTitle = 'Empresas e usuários';
   @Input() profileName = 'Visitante Fluxo';
   @Input() profileSubtitle = '@visitante';
-  @Input() profileInitials = 'LR';
+  @Input() profileInitials = 'FH';
 }

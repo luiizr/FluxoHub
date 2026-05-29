@@ -1,10 +1,21 @@
 :host {
   display: block;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
   background: #f4f6f8;
   color: #17202a;
   font-size: 13px;
   font-family: Inter, system-ui, sans-serif;
+}
+
+.dashboard-page {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
 }
 
 a {
@@ -51,21 +62,38 @@ input {
   display: grid;
   grid-template-columns: 220px minmax(420px, 720px) 300px 172px;
   gap: 18px;
-  align-items: start;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
   max-width: 1500px;
   margin: 0 auto;
   padding: 18px;
+  overflow: hidden;
 }
 
 .dashboard-layout > * {
   min-width: 0;
+  min-height: 0;
 }
 
 .left-sidebar,
 .right-panel,
 .contact-rail {
-  position: sticky;
-  top: 82px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.left-sidebar::-webkit-scrollbar,
+.right-panel::-webkit-scrollbar,
+.contact-rail::-webkit-scrollbar,
+.feed-column::-webkit-scrollbar {
+  display: none;
 }
 
 .project-post,
@@ -76,16 +104,32 @@ input {
 }
 
 .right-panel,
-.contact-rail,
-.feed-column {
+.contact-rail {
   display: grid;
   gap: 12px;
+}
+
+.feed-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .feed-column,
 app-project-carousel {
   min-width: 0;
   max-width: 100%;
+}
+
+app-project-carousel {
+  display: block;
+  flex: 0 0 auto;
 }
 
 .post-header button,
@@ -310,13 +354,35 @@ app-project-carousel {
 }
 
 @media (max-width: 980px) {
+  :host {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .dashboard-page {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
   .dashboard-layout {
     grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
   }
 
   .left-sidebar,
   .right-panel {
-    position: static;
+    height: auto;
+    overflow: visible;
+  }
+
+  .feed-column {
+    height: auto;
+    overflow: visible;
   }
 }
 

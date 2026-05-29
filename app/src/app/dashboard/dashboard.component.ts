@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ProjectImportPanelComponent } from '../shared/project-import-panel/project-import-panel.component';
 import {
   ProjectCarouselComponent,
@@ -52,6 +52,11 @@ interface DashboardEvent {
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
+  @ViewChild('feedColumn') private feedColumn?: ElementRef<HTMLElement>;
+
+  private readonly emptySpaceIgnoredSelectors =
+    '.feed-column, .left-sidebar, .right-panel, .contact-rail, app-topbar, .topbar';
+
   readonly navItems: SidebarNavItem[] = [
     { label: 'Feed', icon: 'feed', active: true },
     { label: 'Empresas', icon: 'companies' },
@@ -172,4 +177,33 @@ export class DashboardComponent {
     { name: 'Jimmy', initials: 'JM', color: '#22c55e' },
   ];
 
+  scrollFeedFromEmptySpace(event: WheelEvent): void {
+    const target = event.target;
+    const feedColumn = this.feedColumn?.nativeElement;
+
+    if (!feedColumn || !(target instanceof Element) || target.closest(this.emptySpaceIgnoredSelectors)) {
+      return;
+    }
+
+    const deltaY = this.getVerticalWheelDistance(event, feedColumn);
+
+    if (deltaY === 0) {
+      return;
+    }
+
+    event.preventDefault();
+    feedColumn.scrollBy({ top: deltaY });
+  }
+
+  private getVerticalWheelDistance(event: WheelEvent, feedColumn: HTMLElement): number {
+    if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) {
+      return event.deltaY * 16;
+    }
+
+    if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
+      return event.deltaY * feedColumn.clientHeight;
+    }
+
+    return event.deltaY;
+  }
 }

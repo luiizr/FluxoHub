@@ -19,4 +19,14 @@ describe('AuthComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should start in login mode', () => {
+    expect(component.authMode).toBe('login');
+  });
+
+  it('should switch auth modes', () => {
+    component.setAuthMode('register');
+
+    expect(component.authMode).toBe('register');
+  });
 });

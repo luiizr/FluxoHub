@@ -1,1 +1,107 @@
-<p>auth works!</p>
+<main class="auth-page">
+  <section class="brand-panel" aria-label="FluxoHub">
+    <a class="brand-link" href="/" aria-label="Voltar para o feed">
+      <img src="/fluxohub-logo2.png" alt="" />
+      <span>FluxoHub</span>
+    </a>
+
+    <div class="showcase">
+      <img src="/fluxohub-banner.png" alt="FluxoHub Workspace" />
+    </div>
+
+    <div class="brand-copy">
+      <span>Portfólios, empresas e projetos em um feed vivo.</span>
+      <strong>Entre para acompanhar builds, publicar páginas e conectar seu trabalho a clientes.</strong>
+    </div>
+  </section>
+
+  <section class="auth-panel" aria-label="Acesso">
+    <div class="auth-card">
+      <div class="auth-heading">
+        <p>{{ authMode === 'login' ? 'Bem-vindo de volta' : 'Crie sua conta' }}</p>
+        <h1>{{ authMode === 'login' ? 'Entrar no FluxoHub' : 'Começar no FluxoHub' }}</h1>
+      </div>
+
+      <div class="mode-tabs" role="tablist" aria-label="Tipo de acesso">
+        <button
+          type="button"
+          role="tab"
+          [class.active]="authMode === 'login'"
+          [attr.aria-selected]="authMode === 'login'"
+          (click)="setAuthMode('login')"
+        >
+          Entrar
+        </button>
+        <button
+          type="button"
+          role="tab"
+          [class.active]="authMode === 'register'"
+          [attr.aria-selected]="authMode === 'register'"
+          (click)="setAuthMode('register')"
+        >
+          Registrar
+        </button>
+      </div>
+
+      <form class="auth-form" (submit)="$event.preventDefault()">
+        @if (authMode === 'register') {
+          <label>
+            <span>Nome</span>
+            <input type="text" name="name" autocomplete="name" placeholder="Seu nome" />
+          </label>
+        }
+
+        <label>
+          <span>E-mail</span>
+          <input type="email" name="email" autocomplete="email" placeholder="voce@email.com" />
+        </label>
+
+        <label>
+          <span>Senha</span>
+          <input
+            type="password"
+            name="password"
+            [attr.autocomplete]="authMode === 'login' ? 'current-password' : 'new-password'"
+            placeholder="Sua senha"
+          />
+        </label>
+
+        @if (authMode === 'register') {
+          <label>
+            <span>Empresa ou projeto</span>
+            <input type="text" name="workspace" autocomplete="organization" placeholder="FluxoHub Workspace" />
+          </label>
+        }
+
+        <div class="form-row">
+          <label class="check-field">
+            <input type="checkbox" [checked]="authMode === 'login'" />
+            <span>{{ authMode === 'login' ? 'Manter conectado' : 'Aceito os termos' }}</span>
+          </label>
+
+          @if (authMode === 'login') {
+            <a href="#">Esqueci a senha</a>
+          }
+        </div>
+
+        <button class="submit-button" type="submit">
+          {{ authMode === 'login' ? 'Entrar' : 'Criar conta' }}
+        </button>
+      </form>
+
+      <div class="divider"><span>ou</span></div>
+
+      <button class="social-button" type="button">
+        <span aria-hidden="true">G</span>
+        Continuar com Google
+      </button>
+
+      <p class="switch-copy">
+        {{ authMode === 'login' ? 'Ainda não tem conta?' : 'Já tem conta?' }}
+        <button type="button" (click)="setAuthMode(authMode === 'login' ? 'register' : 'login')">
+          {{ authMode === 'login' ? 'Registrar' : 'Entrar' }}
+        </button>
+      </p>
+    </div>
+  </section>
+</main>

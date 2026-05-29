@@ -108,5 +108,11 @@ a {
   .carousel-track {
     animation: none;
     overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .carousel-track::-webkit-scrollbar {
+    display: none;
   }
 }

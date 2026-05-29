@@ -1,4 +1,4 @@
-<div class="dashboard-page">
+<div class="dashboard-page" (wheel)="scrollFeedFromEmptySpace($event)">
   <app-topbar [filters]="feedFilters"></app-topbar>
 
   <div class="dashboard-layout">
@@ -7,12 +7,9 @@
       [navItems]="navItems"
       [followedEntities]="followedEntities"
       listTitle="Empresas e usuários"
-      profileName="Ahmad Nur Fawad"
-      profileSubtitle="@fawad"
-      profileInitials="AN"
     ></app-sidebar>
 
-    <main class="feed-column">
+    <main #feedColumn class="feed-column">
       <app-project-import-panel></app-project-import-panel>
 
       <app-project-carousel [projects]="featuredProjects"></app-project-carousel>
